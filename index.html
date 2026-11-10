@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#101412">
+  <meta name="description" content="Endless Horde: pierwszy grywalny prototyp dark fantasy pixel art.">
+  <title>Endless Horde | Prototyp 0.0.19</title>
+  <link rel="stylesheet" href="style.css?v=0.0.19">
+</head>
+<body>
+  <div id="game-shell">
+    <canvas id="arena" aria-label="Arena walki Endless Horde"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="hud">
+      <div class="hud-top">
+        <div class="hud-panel identity"><span class="mini-kicker">ENDLESS HORDE</span><strong>ŁOTRZYK <span class="bullet">✦</span> <span id="weapon-name">ŁUK</span></strong></div>
+        <div class="hud-panel timer-panel"><span class="mini-kicker">PRZETRWAJ</span><strong id="timer">05:00</strong></div>
+        <div class="hud-actions">
+          <button class="hud-panel stats-button" id="stats-btn" type="button" aria-label="Statystyki postaci" title="Statystyki postaci (C)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 18V11 M9 18V6 M14 18V9 M19 18V3 M2 20H22"/></svg></button>
+          <button class="hud-panel pause-button" id="pause-btn" aria-label="Pauza" title="Pauza (P)">Ⅱ</button>
+          <button class="hud-panel fullscreen-button" id="fullscreen-btn" aria-label="Włącz pełny ekran" aria-pressed="false" title="Pełny ekran (F)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" aria-hidden="true">
+              <path class="fullscreen-enter-icon" d="M9 4H4v5 M15 4h5v5 M20 15v5h-5 M9 20H4v-5"/>
+              <path class="fullscreen-exit-icon" d="M4 9h5V4 M20 9h-5V4 M15 20v-5h5 M4 15h5v5"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="hud-bottom">
+        <div class="hud-panel status-panel">
+          <div class="stat-row"><span>ŻYCIE</span><strong id="hp-text">100 / 100</strong></div>
+          <div class="bar hp-bar"><div id="hp-fill"></div></div>
+          <div class="stat-row xp-row"><span id="level-text">POZIOM 1</span><strong id="xp-text">0 / 8 EXP</strong></div>
+          <div class="bar xp-bar"><div id="xp-fill"></div></div>
+        </div>
+        <div class="hud-panel mod-panel"><span class="mini-kicker">MODYFIKATORY BRONI</span><strong id="mods-text">◇ PUSTE · ◇ PUSTE</strong><small id="kills-text">Pokonani: 0</small></div>
+      </div>
+    </div>
+    <div class="touch-controls" id="touch-controls" aria-label="Sterowanie dotykowe">
+      <div class="touch-control touch-left" data-hand="left">
+        <div class="joystick" id="joystick-left" role="group" aria-label="Lewy joystick"><div class="joystick-knob" id="joystick-left-knob"></div></div>
+        <div class="touch-help">LEWA RĘKA</div>
+      </div>
+      <div class="touch-control touch-right is-primary" data-hand="right">
+        <div class="joystick" id="joystick-right" role="group" aria-label="Prawy joystick"><div class="joystick-knob" id="joystick-right-knob"></div></div>
+        <div class="touch-help">PRAWA RĘKA</div>
+      </div>
+    </div>
+    <div id="overlay" class="overlay shown" role="dialog" aria-modal="true" aria-labelledby="panel-title">
+      <div class="overlay-panel">
+        <div class="ornament">✦ &nbsp; C A L I O N &nbsp; ✦</div>
+        <div class="crest-mark"><div class="crest-shield"><span>♜</span></div></div>
+        <h1 id="panel-title">SURVIVORS</h1>
+        <p class="panel-subtitle" id="panel-subtitle">Zapomniany Trakt</p>
+        <div id="panel-content"></div>
+      </div>
+      <div class="game-version">PROTOTYP v0.0.19 · DARK FANTASY PIXEL ART</div>
+    </div>
+    <div class="stats-overlay" id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title" aria-hidden="true">
+      <section class="stats-panel">
+        <div class="stats-header"><div><span class="mini-kicker">KARTA POSTACI</span><h2 id="stats-title">Statystyki postaci</h2></div><button id="stats-close" type="button" aria-label="Zamknij statystyki">✕</button></div>
+        <div id="stats-content"></div><p class="stats-footer">Zamknij: C, Esc lub ✕</p>
+      </section>
+    </div>
+    <div class="toast" id="toast" aria-live="polite"></div>
+  </div>
+  <script src="game.js?v=0.0.19" defer></script>
+</body>
+</html>
